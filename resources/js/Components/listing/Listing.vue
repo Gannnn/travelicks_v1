@@ -1,0 +1,49 @@
+<template>
+    <div class="col-span-1 cursor-pointer">
+      <Link :href="route('listing.show', props.slug)">
+        <div class="flex gap-2 w-full">
+          <div class="aspect-square w-full relative overflow-hidden rounded-xl">
+            <img
+              class="object-cover h-full w-full hover:scale-110 transition"
+              rel="preload"
+              as="image"
+              :src="props.image"
+              alt="Image living"
+              height="400"
+              width="400"
+            />
+            <font-awesome-icon icon="fa-solid fa-heart" class="fill-white absolute -top[2px] -right-[2px]" />
+          </div>
+        </div>
+        <div class="font-semibold text-lg mt-2">
+          {{ props.state }}, {{ props.location }}
+        </div>
+        <div class="font-light text-neutral-500">
+          {{ props.category }}
+        </div>
+        <div class="flex items-center gap-1 mt-1">
+          <div class="font-semibold">
+            {{ props.price }}
+          </div>
+          <div class="font-light">
+            / Night
+          </div>
+        </div>
+      </Link>
+    </div>
+  </template>
+  
+  <script setup>
+  import { Link } from '@inertiajs/vue3';
+  
+  const props = defineProps(['state', 'price', 'slug', 'location', 'category', 'image']);
+  
+  </script>
+  
+  <style scoped>
+  .comment-section {
+    max-width: 600px;
+    margin: auto;
+  }
+  </style>
+  
